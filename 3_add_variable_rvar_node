@@ -1,0 +1,38 @@
+#include "hsh.h"
+
+/**
+ * addRVarNode - Adds a variable at the end
+ * of a r_var list.
+ * @head: Pointer to the head of the linked list.
+ * @lengthVar: Length of the variable.
+ * @value: Value of the variable.
+ * @lengthValue: Length of the value.
+ * Return: Address of the head.
+ */
+r_var *addRVarNode(r_var **head, int lengthVar, char *value, int lengthValue)
+{
+    r_var *newNode, *temp;
+
+    newNode = malloc(sizeof(r_var));
+    if (newNode == NULL)
+        return (NULL);
+
+    newNode->len_var = lengthVar;
+    newNode->val = value;
+    newNode->len_val = lengthValue;
+
+    newNode->next = NULL;
+    temp = *head;
+	if (temp == NULL)
+    {
+        *head = newNode;
+    }
+    else
+    {
+	while (temp->next != NULL)
+            temp = temp->next;
+	temp->next = newNode;
+    }
+
+    return (*head);
+}
